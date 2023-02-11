@@ -1,0 +1,18 @@
+---
+title: "Portfolio-2"
+author: "Conor Lacey"
+date: '2023-02-11'
+output: github_document
+---
+
+
+### Introduction
+
+So for this portfolio I want to make some graphs and plots for my thesis. I will refine some previous graphics I've done as well as add some new ones. 
+
+```{r setup, include=FALSE}
+
+
+
+```
+
