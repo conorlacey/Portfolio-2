@@ -77,20 +77,52 @@ dat %>% ggplot(aes(x = x)) +
        y = "Mean Predicited Response") + 
   geom_line(aes(y= y1, color = "Reference"), linewidth = 1) +
   geom_line(aes(y = y2, color = "Focal"), linewidth = 1) +
-  scale_color_manual(name = "Legend",
+  scale_color_manual(name = "",
                      breaks = c("Reference", "Focal"),
                      values = c("Reference" = "red", "Focal" = "blue")) +
-  geom_polygon(data = pdat, aes(x =px, y =py), fill = "purple", alpha = .25) +
-  theme(text = element_text(family = "Times"),
-        axis.title.y = element_text(size = 15),
-        axis.title.x = element_text(size = 18),
-        axis.text = element_text(size = 10),
+  geom_polygon(data = pdat, 
+               aes(x =px, y =py), fill = "purple", alpha = .25) +
+  theme(axis.title.x = element_text(size = 15),
         legend.key.size = unit(1,"cm"),
-        legend.title = element_text(size = 12),
         legend.text = element_text(size = 10))  
 ```
 
-![](Portfolio-2_files/figure-gfm/DIF-Plot-Refined-1.png)<!-- -->
+![](Portfolio-2_files/figure-gfm/DIF%20Plot%20Refined-1.png)<!-- -->
 
 In comparison to my previous graph, I would say this one looks way
 cooler. Much more aesthetically pleasing.
+
+### Shrunken Estimates Graph
+
+The goal of this graph is meant to show how estimates of dMACS will only
+be shrunken under my model as the probability of it being zero
+increases. It will be impossible for my model, dMACS_Shrunk, to inflate
+estimates.
+
+This graph should be fairly simple to make
+
+``` r
+#Coordinates
+x<-seq(0,1,by=0.1)
+y1<-c(1-x)
+y2<-c(rep(1,11))
+y<-c(y1,y2)
+group<-c(rep("dMACS_Shrunk",11),rep("dMACS",11))
+dat<-data.frame(x=c(x,x), y, group)
+adat<-data.frame(x = x[2:11], y1 = y1[2:11], y2 = y2[2:11])
+
+
+#Plot
+dat %>% ggplot(aes(x = x, y = y, color = group)) +
+  geom_point(size = 3.5) +
+  geom_line() +
+  geom_segment(data = adat, 
+               aes(x = x, y = y2, xend = x, yend = y1),
+                  color = "black",
+                  arrow = arrow(length = unit(0.3, "cm"))) + 
+  labs(x = "Probabiliy of dMACS being zero",
+       y = "Estimate") +
+  theme(legend.title=element_blank())
+```
+
+![](Portfolio-2_files/figure-gfm/dMACS_Shrunk%20Plot-1.png)<!-- -->
