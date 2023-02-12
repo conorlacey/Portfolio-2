@@ -76,7 +76,7 @@ dat %>% ggplot(aes(x = x)) +
   labs(x = expression(theta),
        y = "Mean Predicited Response") + 
   geom_line(aes(y= y1, color = "Reference"), linewidth = 1) +
-  geom_line(aes(y = y2, color = "Focal"), linewidth =1) +
+  geom_line(aes(y = y2, color = "Focal"), linewidth = 1) +
   scale_color_manual(name = "Legend",
                      breaks = c("Reference", "Focal"),
                      values = c("Reference" = "red", "Focal" = "blue")) +
@@ -91,3 +91,6 @@ dat %>% ggplot(aes(x = x)) +
 ```
 
 ![](Portfolio-2_files/figure-gfm/DIF-Plot-Refined-1.png)<!-- -->
+
+In comparison to my previous graph, I would say this one looks way
+cooler. Much more aesthetically pleasing.
