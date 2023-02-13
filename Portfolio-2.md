@@ -126,3 +126,13 @@ dat %>% ggplot(aes(x = x, y = y, color = group)) +
 ```
 
 ![](Portfolio-2_files/figure-gfm/dMACS_Shrunk%20Plot-1.png)<!-- -->
+
+### Posterior Distribution…
+
+So for my next portfolio I will show how my prior probabilities of
+H1(Slab) and H0(Spike) are updated with the data to create posterior
+probabilities. However, I’m still running through the code of the paper
+that inspired my method for dMACS_Shrunk to figure out how to do this
+exactly. Therefore, this portfolio is…
+
+to be continued…
